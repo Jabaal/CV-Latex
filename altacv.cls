@@ -97,11 +97,14 @@
   \begingroup
     \ifdef{\@photodiameter}{\begin{minipage}{\dimexpr\linewidth-\@photodiameter-2em}}{}%
     \raggedright\color{emphasis}%
-    {\Huge\bfseries\MakeUppercase{\@name}\par}
+    %{\Huge\bfseries\MakeUppercase{\@name}\par}
+    {\Huge\MakeUppercase{\@name}\par}
     \medskip
-    {\large\bfseries\color{accent}\@tagline\par}
+    %{\large\bfseries\color{accent}\@tagline\par}
+    {\large\color{accent}\@tagline\par}
     \medskip
-    {\footnotesize\bfseries\@personalinfo\par}
+    %{\footnotesize\bfseries\@personalinfo\par}
+    {\footnotesize\@personalinfo\par}
     \ifdef{\@photodiameter}{%
     \end{minipage}\hfill%
     \begin{minipage}{\@photodiameter}
@@ -119,29 +122,33 @@
 \newcommand{\cvsection}[2][]{%
   \bigskip%
   \ifstrequal{#1}{}{}{\marginpar{\vspace*{\dimexpr1pt-\baselineskip}\raggedright\input{#1}}}%
-  {\color{heading}\LARGE\bfseries\MakeUppercase{#2}}\\[-1ex]%
+  %{\color{heading}\LARGE\bfseries\MakeUppercase{#2}}\\[-1ex]% original
+  {\color{heading}\LARGE\MakeUppercase{#2}}\\[-1ex]% ownaddition
   {\color{heading}\rule{\linewidth}{2pt}\par}\medskip
 }
 
 \newcommand{\cvsubsection}[1]{%
   \smallskip%
-  {\color{emphasis}\large\bfseries{#1}\par}\medskip
+  %{\color{emphasis}\large\bfseries{#1}\par}\medskip% original
+  {\color{emphasis}\large{#1}\par}\medskip% ownaddition
 }
 
 \newcommand{\cvevent}[4]{%
   {\large\color{emphasis}#1\par}
-  \smallskip
+  %\smallskip
   \ifstrequal{#2}{}{}{
-  \textbf{\color{accent}#2}\par
+  %\textbf{\color{accent}#2}\par
+  \textit{\color{accent}#2}\par
   \smallskip}
-  \ifstrequal{#3}{}{}{\small\makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#3}%
-  \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.5em}#4}}\par}
+  \ifstrequal{#3}{}{}{\small\makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#3}\par%
+  \ifstrequal{#4}{}{}{\makebox[0.5\linewidth][l]{\faMapMarker\hspace{0.9em}#4}}\par}
   \medskip
 }
 
 \newcommand{\cvachievement}[3]{%
   \begin{tabularx}{\linewidth}{@{}p{2em} @{\hspace{1ex}} >{\raggedright\arraybackslash}X@{}}
-  \multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
+  %\multirow{2}{*}{\Large\color{accent}#1} & \bfseries\textcolor{emphasis}{#2}\\
+  \multirow{2}{*}{\Large\color{accent}#1} & \textcolor{emphasis}{#2}\\
   & #3
   \end{tabularx}%
   \smallskip
@@ -152,7 +159,8 @@
 }
 
 \newcommand{\cvskill}[2]{%
-\textcolor{emphasis}{\textbf{#1}}\hfill
+%\textcolor{emphasis}{\textbf{#1}}\hfill
+\textcolor{emphasis}{#1}\hfill
 \foreach \x in {1,...,5}{%
   \space{\ifnumgreater{\x}{#2}{\color{body!30}}{\color{accent}}\ratingmarker}}\par%
 }
